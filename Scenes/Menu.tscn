@@ -1,0 +1,119 @@
+[gd_scene load_steps=8 format=3 uid="uid://g48fwde3kbxv"]
+
+[ext_resource type="Script" path="res://Scenes/Menu.gd" id="1_g2yh3"]
+[ext_resource type="FontFile" uid="uid://dldt0ibeuokso" path="res://Assets/Fonts/WatermintScript_PERSONAL_USE_ONLY.otf" id="1_kiyfl"]
+[ext_resource type="FontFile" uid="uid://cq7w7fouxsfsi" path="res://Assets/Fonts/Espresso Show.otf" id="2_6gj2l"]
+[ext_resource type="Texture2D" uid="uid://b5dxfb2wlbxbh" path="res://Assets/Sprites/button.png" id="3_0cl4i"]
+
+[sub_resource type="Animation" id="Animation_kbp4h"]
+resource_name = "btn_happy"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureButton:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureButton:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(378, 447), Vector2(363, 446), Vector2(378, 447)]
+}
+
+[sub_resource type="Animation" id="Animation_a463y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureButton:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureButton:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(378, 447)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ik17p"]
+_data = {
+"RESET": SubResource("Animation_a463y"),
+"btn_happy": SubResource("Animation_kbp4h")
+}
+
+[node name="Menu" type="Node2D"]
+script = ExtResource("1_g2yh3")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1153.0
+offset_bottom = 648.0
+color = Color(0.364706, 0.564706, 1, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 128.0
+offset_top = 42.0
+offset_right = 695.0
+offset_bottom = 194.0
+theme_override_fonts/font = ExtResource("1_kiyfl")
+theme_override_font_sizes/font_size = 150
+text = "Make me,"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 525.0
+offset_top = 174.0
+offset_right = 1000.0
+offset_bottom = 357.0
+theme_override_fonts/font = ExtResource("2_6gj2l")
+theme_override_font_sizes/font_size = 150
+text = "Laugh"
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_left = 378.0
+offset_top = 447.0
+offset_right = 753.0
+offset_bottom = 591.0
+texture_normal = ExtResource("3_0cl4i")
+
+[node name="Label" type="Label" parent="TextureButton"]
+layout_mode = 0
+offset_left = 94.0
+offset_top = 17.0
+offset_right = 271.0
+offset_bottom = 115.0
+theme_override_fonts/font = ExtResource("2_6gj2l")
+theme_override_font_sizes/font_size = 80
+text = "play"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ik17p")
+}
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
