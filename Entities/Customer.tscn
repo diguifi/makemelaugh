@@ -1,0 +1,80 @@
+[gd_scene load_steps=16 format=3 uid="uid://crn8b70ebw4fu"]
+
+[ext_resource type="Texture2D" uid="uid://1ci771fcrjx" path="res://Assets/Sprites/cliente.png" id="1_7dqa1"]
+[ext_resource type="Script" path="res://Entities/Customer.gd" id="1_57t7t"]
+[ext_resource type="Script" path="res://Entities/Spawner.gd" id="2_fnvuk"]
+[ext_resource type="Texture2D" uid="uid://d3cka6qvalo7i" path="res://Assets/Sprites/blush_bad.png" id="3_76fq3"]
+[ext_resource type="Texture2D" uid="uid://nf0xegi02bxx" path="res://Assets/Sprites/blush_good.png" id="4_ntru7"]
+[ext_resource type="Texture2D" uid="uid://bvv7yjdhx5abp" path="res://Assets/Sprites/eye_bad.png" id="5_4s1gg"]
+[ext_resource type="Texture2D" uid="uid://cjcr2u8voub55" path="res://Assets/Sprites/eye_good.png" id="6_oi1wp"]
+[ext_resource type="Texture2D" uid="uid://cp246r2tyunll" path="res://Assets/Sprites/batom_bad.png" id="7_vjmqq"]
+[ext_resource type="Texture2D" uid="uid://bx45hk5o48lt" path="res://Assets/Sprites/batom_good.png" id="8_qv5lv"]
+[ext_resource type="Texture2D" uid="uid://cysp0kjgsv8h6" path="res://Assets/Sprites/cilios_bad.png" id="9_14hhx"]
+[ext_resource type="Texture2D" uid="uid://dqcgnncpv1arb" path="res://Assets/Sprites/cilios_good.png" id="10_exu0b"]
+[ext_resource type="Texture2D" uid="uid://cme80fu2fbl7k" path="res://Assets/Sprites/rimel_bad.png" id="11_3csdk"]
+[ext_resource type="Texture2D" uid="uid://cy8mflfe8i7yo" path="res://Assets/Sprites/rimel_good.png" id="12_t64xy"]
+[ext_resource type="Texture2D" uid="uid://x8d75vvbthq" path="res://Assets/Sprites/brincos_bad.png" id="13_xsj7o"]
+[ext_resource type="Texture2D" uid="uid://ygfq4l7s8ll3" path="res://Assets/Sprites/brincos_good.png" id="14_un0mj"]
+
+[node name="Customer" type="Node2D"]
+script = ExtResource("1_57t7t")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7dqa1")
+
+[node name="BlushBad" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_76fq3")
+
+[node name="BlushGood" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4_ntru7")
+
+[node name="EyeBad" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("5_4s1gg")
+
+[node name="EyeGood" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("6_oi1wp")
+
+[node name="BatomBad" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("7_vjmqq")
+
+[node name="BatomGood" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("8_qv5lv")
+
+[node name="CiliosBad" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("9_14hhx")
+
+[node name="CiliosGood" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("10_exu0b")
+
+[node name="RimelBad" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("11_3csdk")
+
+[node name="RimelGood" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("12_t64xy")
+
+[node name="BrincoBad" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("13_xsj7o")
+
+[node name="BrincoGood" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("14_un0mj")
+
+[node name="Spawner" type="Node2D" parent="."]
+position = Vector2(479, 239)
+script = ExtResource("2_fnvuk")
+
+[node name="Timer" type="Timer" parent="Spawner"]
+autostart = true
+
+[connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_timer_timeout"]

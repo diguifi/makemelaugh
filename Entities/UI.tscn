@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmw2e47772qjg"]
+
+[ext_resource type="Script" path="res://Entities/UI.gd" id="1_n3eet"]
+
+[node name="Ui" type="Node2D"]
+script = ExtResource("1_n3eet")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 467.0
+offset_top = 8.0
+offset_right = 543.0
+offset_bottom = 31.0
+scale = Vector2(2, 2)
+text = "POINTS: 0"

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlpm40ojeennp"]
+
+[ext_resource type="PackedScene" uid="uid://dl4h7i6ao01ds" path="res://Entities/Laugh.tscn" id="1_a5x2f"]
+[ext_resource type="PackedScene" uid="uid://c4bymtw3y5q8" path="res://Entities/Brush.tscn" id="2_la28y"]
+[ext_resource type="PackedScene" uid="uid://cmw2e47772qjg" path="res://Entities/UI.tscn" id="3_417v1"]
+
+[node name="Game" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1153.0
+offset_bottom = 648.0
+color = Color(0.364706, 0.564706, 1, 1)
+
+[node name="Laugh" parent="." instance=ExtResource("1_a5x2f")]
+position = Vector2(851, 294)
+
+[node name="Brush" parent="." instance=ExtResource("2_la28y")]
+position = Vector2(545, 679)
+
+[node name="Ui" parent="." instance=ExtResource("3_417v1")]
