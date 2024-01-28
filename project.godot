@@ -21,6 +21,10 @@ Global="*res://Global.gd"
 Signals="*res://Signals.gd"
 SoundManager="*res://Scenes/SoundManager.tscn"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
