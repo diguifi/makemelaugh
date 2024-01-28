@@ -49,9 +49,6 @@ is_cutscene = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
-[node name="Timer" type="Timer" parent="."]
-one_shot = true
-
 [node name="SkipButton" type="TextureButton" parent="."]
 offset_left = 948.0
 offset_top = 569.0
@@ -71,5 +68,4 @@ theme_override_font_sizes/font_size = 80
 text = "skip"
 
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="SkipButton" to="." method="_on_texture_button_pressed"]

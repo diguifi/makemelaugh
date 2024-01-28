@@ -38,6 +38,7 @@ var time_alone = 8
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	check_translation()
 	level_scene.visible = !Global.is_first_cene
 	if Global.level == 1:
 		player.stream = inicio
@@ -87,11 +88,6 @@ func _process(delta):
 		time+=delta
 		alone_scene.visible = time > time_alone
 
-
-func _on_timer_timeout():
-	pass # Replace with function body.
-
-
 func _on_audio_stream_player_finished():
 	if Global.level == 1:
 		get_tree().change_scene_to_file("res://Game.tscn")
@@ -124,4 +120,30 @@ func _on_texture_button_pressed():
 	if Global.level != 6:
 		get_tree().change_scene_to_file("res://Game.tscn")
 	else:
+		Global.reset()
 		get_tree().change_scene_to_file("res://Scenes/Menu.tscn")
+
+func check_translation():
+	var locale = TranslationServer.get_locale()
+	if not "pt" in locale:
+		inicio = preload("res://Assets/Sfx/inicio_en.mp3")
+		level1_1 = preload("res://Assets/Sfx/level_1_1_en.mp3")
+		level1_2 = preload("res://Assets/Sfx/level1_2_en.mp3")
+		level1_bad = preload("res://Assets/Sfx/level1_bad_en.mp3")
+		level1_good = preload("res://Assets/Sfx/level1_good_en.mp3")
+		level2_1 = preload("res://Assets/Sfx/level2_1_en.mp3")
+		level2_2 = preload("res://Assets/Sfx/level2_2_en.mp3")
+		level2_bad = preload("res://Assets/Sfx/level2_bad_en.mp3")
+		level2_good = preload("res://Assets/Sfx/level2_good_en.mp3")
+		level3_1 = preload("res://Assets/Sfx/level3_1_en.mp3")
+		level3_2 = preload("res://Assets/Sfx/level3_2_en.mp3")
+		level3_bad = preload("res://Assets/Sfx/level3_bad_en.mp3")
+		level3_good = preload("res://Assets/Sfx/level3_good_en.mp3")
+		level4_1 = preload("res://Assets/Sfx/level4_1_en.mp3")
+		level4_2 = preload("res://Assets/Sfx/level4_2_en.mp3")
+		level4_bad = preload("res://Assets/Sfx/level4_bad_en.mp3")
+		level4_good = preload("res://Assets/Sfx/level4_good_en.mp3")
+		level5_1 = preload("res://Assets/Sfx/level5_1_en.mp3")
+		level5_2 = preload("res://Assets/Sfx/level5_2_en.mp3")
+		level5_bad = preload("res://Assets/Sfx/level5_bad_en.mp3")
+		level5_good = preload("res://Assets/Sfx/level5_good_en.mp3")

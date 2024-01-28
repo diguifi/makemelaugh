@@ -29,3 +29,12 @@ func next_level():
 	points = 0
 	attempts = 0
 	
+func reset():
+	points = 0
+	level = 1
+	attempts = 0
+	max_attempts = 10
+	sucesso = false
+	is_first_cene = true
+	background = 0
+	adquiriu = 0

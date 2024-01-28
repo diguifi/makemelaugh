@@ -48,6 +48,7 @@ func _on_texture_button_button_down():
 		visible = false
 		bubble.play()
 		if points >= 7:
+			Signals.emit_signal('react_happy')
 			ping.play()
 
 func _on_bubble_finished():
