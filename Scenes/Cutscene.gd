@@ -28,6 +28,7 @@ var level5_1 = preload("res://Assets/Sfx/level5_1.mp3")
 var level5_2 = preload("res://Assets/Sfx/level5_2.mp3")
 var level5_bad = preload("res://Assets/Sfx/level5_bad.mp3")
 var level5_good = preload("res://Assets/Sfx/level5_good.mp3")
+var claps = preload("res://Assets/Sfx/clap.mp3")
 var audio_number = 0
 var audio_good
 var audio_bad
@@ -59,14 +60,21 @@ func _ready():
 		final_audio = level3_2
 		player.stream = level3_1
 		player.play()
+		if Global.sucesso:
+			Global.background = 2
+		else:
+			Global.background = 1
 	elif Global.level == 5:
 		audio_good = level4_good
 		audio_bad = level4_bad
 		final_audio = level4_2
 		player.stream = level4_1
 		player.play()
+		if Global.sucesso:
+			Global.adquiriu = 2
+		else:
+			Global.adquiriu = 1
 	elif Global.level == 6:
-		skip.visible = false
 		audio_good = level5_good
 		audio_bad = level5_bad
 		final_audio = level5_2
@@ -106,9 +114,14 @@ func _on_audio_stream_player_finished():
 					laugh_sad.visible = true
 				alone_scene.visible = true
 				level_scene.visible = false
+				player.stream = claps
+				player.play()
 			else:
 				get_tree().change_scene_to_file("res://Game.tscn")
 		audio_number += 1
 
 func _on_texture_button_pressed():
-	get_tree().change_scene_to_file("res://Game.tscn")
+	if Global.level != 6:
+		get_tree().change_scene_to_file("res://Game.tscn")
+	else:
+		get_tree().change_scene_to_file("res://Scenes/Menu.tscn")

@@ -1,9 +1,37 @@
-[gd_scene load_steps=8 format=3 uid="uid://g48fwde3kbxv"]
+[gd_scene load_steps=9 format=3 uid="uid://g48fwde3kbxv"]
 
 [ext_resource type="Script" path="res://Scenes/Menu.gd" id="1_g2yh3"]
 [ext_resource type="FontFile" uid="uid://dldt0ibeuokso" path="res://Assets/Fonts/WatermintScript_PERSONAL_USE_ONLY.otf" id="1_kiyfl"]
 [ext_resource type="FontFile" uid="uid://cq7w7fouxsfsi" path="res://Assets/Fonts/Espresso Show.otf" id="2_6gj2l"]
 [ext_resource type="Texture2D" uid="uid://b5dxfb2wlbxbh" path="res://Assets/Sprites/button.png" id="3_0cl4i"]
+[ext_resource type="AudioStream" uid="uid://4ln8mmkdbdcq" path="res://Assets/Sfx/pop.mp3" id="5_gg0gy"]
+
+[sub_resource type="Animation" id="Animation_a463y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureButton:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureButton:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(378, 447)]
+}
 
 [sub_resource type="Animation" id="Animation_kbp4h"]
 resource_name = "btn_happy"
@@ -31,33 +59,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(378, 447), Vector2(363, 446), Vector2(378, 447)]
-}
-
-[sub_resource type="Animation" id="Animation_a463y"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TextureButton:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("TextureButton:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(378, 447)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ik17p"]
@@ -116,4 +117,8 @@ libraries = {
 "": SubResource("AnimationLibrary_ik17p")
 }
 
+[node name="Bubble" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_gg0gy")
+
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="finished" from="Bubble" to="." method="_on_bubble_finished"]

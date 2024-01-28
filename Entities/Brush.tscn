@@ -1,13 +1,61 @@
-[gd_scene load_steps=2 format=3 uid="uid://c4bymtw3y5q8"]
+[gd_scene load_steps=8 format=3 uid="uid://c4bymtw3y5q8"]
 
 [ext_resource type="Script" path="res://Entities/Brush.gd" id="1_5vfio"]
+[ext_resource type="Texture2D" uid="uid://bjavibjued57a" path="res://Assets/Sprites/strong.png" id="2_fn0gb"]
+[ext_resource type="AudioStream" uid="uid://4ln8mmkdbdcq" path="res://Assets/Sfx/pop.mp3" id="3_rf2f0"]
+[ext_resource type="AudioStream" uid="uid://dfky3iwm8jeip" path="res://Assets/Sfx/ping.mp3" id="4_b45u7"]
+
+[sub_resource type="Animation" id="Animation_acd6i"]
+resource_name = "strong_pulse"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.5), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_fvwx5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pqcn2"]
+_data = {
+"RESET": SubResource("Animation_fvwx5"),
+"strong_pulse": SubResource("Animation_acd6i")
+}
 
 [node name="Brush" type="Node2D"]
 script = ExtResource("1_5vfio")
 
-[node name="TextureButton" type="TextureButton" parent="."]
+[node name="BrushBtn" type="TextureButton" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="Sprite2D" type="Sprite2D" parent="BrushBtn"]
+texture = ExtResource("2_fn0gb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BrushBtn"]
+libraries = {
+"": SubResource("AnimationLibrary_pqcn2")
+}
 
 [node name="Spawn1" type="Marker2D" parent="."]
 position = Vector2(-156, 0)
@@ -21,4 +69,13 @@ position = Vector2(63, 0)
 [node name="Spawn4" type="Marker2D" parent="."]
 position = Vector2(161, 0)
 
-[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
+[node name="Bubble" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_rf2f0")
+
+[node name="Ping" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_b45u7")
+volume_db = -5.0
+
+[connection signal="button_down" from="BrushBtn" to="." method="_on_texture_button_button_down"]
+[connection signal="finished" from="Bubble" to="." method="_on_bubble_finished"]
+[connection signal="finished" from="Ping" to="." method="_on_ping_finished"]

@@ -20,3 +20,11 @@ offset_right = 881.0
 offset_bottom = 86.0
 scale = Vector2(2, 2)
 text = "LEVEL: 1"
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 818.0
+offset_top = 116.0
+offset_right = 881.0
+offset_bottom = 139.0
+scale = Vector2(2, 2)
+text = "0/10"

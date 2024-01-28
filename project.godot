@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Global="*res://Global.gd"
 Signals="*res://Signals.gd"
+SoundManager="*res://Scenes/SoundManager.tscn"
 
 [rendering]
 

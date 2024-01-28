@@ -7,6 +7,10 @@ var max_attempts = 10
 
 var sucesso = false
 var is_first_cene = true
+var bg_osasco = preload("res://Assets/Bg/osasco_jpg.jpg")
+var bg_paris = preload("res://Assets/Bg/paris_jpg.jpg")
+var background = 0
+var adquiriu = 0
 
 func _ready():
 	Signals.connect('point', _point)
@@ -18,7 +22,6 @@ func _point(_points):
 
 func next_level():
 	var level_treshold = 75 - level * 4
-	print(level_treshold)
 	sucesso = points > level_treshold
 	is_first_cene = false
 	level += 1

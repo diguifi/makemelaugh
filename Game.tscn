@@ -1,17 +1,31 @@
-[gd_scene load_steps=6 format=3 uid="uid://dlpm40ojeennp"]
+[gd_scene load_steps=9 format=3 uid="uid://dlpm40ojeennp"]
 
 [ext_resource type="PackedScene" uid="uid://dl4h7i6ao01ds" path="res://Entities/Laugh.tscn" id="1_a5x2f"]
+[ext_resource type="Script" path="res://Game.gd" id="1_a12jl"]
+[ext_resource type="Texture2D" uid="uid://pbvqqm0yt2vk" path="res://Assets/Bg/osasco_jpg.jpg" id="2_53v6l"]
 [ext_resource type="PackedScene" uid="uid://crn8b70ebw4fu" path="res://Entities/Customer.tscn" id="3_8uf54"]
 [ext_resource type="PackedScene" uid="uid://cmw2e47772qjg" path="res://Entities/UI.tscn" id="3_417v1"]
 [ext_resource type="FontFile" uid="uid://dldt0ibeuokso" path="res://Assets/Fonts/WatermintScript_PERSONAL_USE_ONLY.otf" id="4_4vbu0"]
 [ext_resource type="FontFile" uid="uid://cq7w7fouxsfsi" path="res://Assets/Fonts/Espresso Show.otf" id="5_kktpw"]
+[ext_resource type="Script" path="res://Scenes/Camera.gd" id="6_jhrpf"]
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_a12jl")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 1153.0
 offset_bottom = 648.0
 color = Color(0.364706, 0.564706, 1, 1)
+
+[node name="BackgroundSprite" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_53v6l")
+centered = false
+
+[node name="ColorRect" type="ColorRect" parent="BackgroundSprite"]
+offset_right = 1159.0
+offset_bottom = 653.0
+color = Color(0, 0, 0, 0.329412)
 
 [node name="Laugh" parent="." instance=ExtResource("1_a5x2f")]
 position = Vector2(986, 324)
@@ -38,3 +52,7 @@ offset_bottom = 150.0
 theme_override_fonts/font = ExtResource("5_kktpw")
 theme_override_font_sizes/font_size = 50
 text = "Laugh"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+script = ExtResource("6_jhrpf")
